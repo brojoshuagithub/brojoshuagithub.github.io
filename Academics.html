@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./stylesheets/main.css" />
   </head>
 
-  <body>
+  <body onload="displayCurrentMessage()">
     <div class="jumbotron container-fluid py-5 d-none d-md-block">
   <div class="py-5 text-light">
     <h1 class="display-4 bg-dark rounded me-5">Official Eportfolio of Joshua Howard</h1>
@@ -86,11 +86,15 @@
 </p>
 
 <div class="d-flex flex-column">
-  <img src="WeberAssoc.jpeg" alt="degrees" width="500">
-  <img src="weberCert1.jpeg" alt="degrees" width="500">
-  <img src="slccAssoc.jpeg" alt="degrees" width="500">
-  <img src="slccCert1.jpeg" alt="degrees" width="500">
-  <img src="slccCert2.jpeg" alt="degrees" width="500">
+  <div class="d-flex flex-row">
+    <img src="WeberAssoc.jpeg" alt="degrees" class="m-1 border border-dark rounded" width="500">
+    <img src="weberCert1.jpeg" alt="degrees" class="m-1 border border-dark rounded" width="500">
+    <img src="slccAssoc.jpeg" alt="degrees" class="m-1 border border-dark rounded" width="500">
+  </div>
+  <div class="d-flex flex-row">
+    <img src="slccCert1.jpeg" alt="degrees" class="m-1 border border-dark rounded" width="500">
+    <img src="slccCert2.jpeg" alt="degrees" class="m-1 border border-dark rounded" width="500">
+  </div>
 </div>
 <hr>
 <h3>Arduino Project</h3>
@@ -119,6 +123,7 @@ src="https://youtube.com/embed//Av4jxIZOT84">
   <p style="font-style: italic;">This is one of the parts since creating the code for the website and launching it recently which has stopped working, and I 
     must look in more detail as to how to fix the quote generator.
   </p>
+  
   <!-- <p>Below you will see a quote generator which was programmed with 
     javascript. This quote generator has an array of objects,
     these objects being quotes, which at the press of the switch button
@@ -128,6 +133,8 @@ src="https://youtube.com/embed//Av4jxIZOT84">
     so I came up with this generator, which also serves now as an example
     of my ability to code in javascript.
   </p> -->
+  
+
 <div class="row row-cols-2 my-5 mx-3" id="messages">
 </div>
 </div>

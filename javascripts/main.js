@@ -242,7 +242,7 @@ function getMessages() {
 
 let currentMessageIndex = 0;
 
-function displayCurrentMessage() {
+windows.displayCurrentMessage = function() {
   let messages = getMessages();
   let currentMessage = messages[currentMessageIndex];
   let messages_html = `
@@ -273,4 +273,4 @@ function displayCurrentMessage() {
   hideForm();
 }
 
-displayCurrentMessage();
+//displayCurrentMessage();
