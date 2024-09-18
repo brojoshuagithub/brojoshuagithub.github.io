@@ -242,7 +242,7 @@ function getMessages() {
 
 let currentMessageIndex = 0;
 
-windows.displayCurrentMessage = function() {
+displayCurrentMessage = function() {
   let messages = getMessages();
   let currentMessage = messages[currentMessageIndex];
   let messages_html = `
