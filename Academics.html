@@ -8,67 +8,17 @@
     <meta name="description" content="TODO: A starter project for ..." />
 
     <link rel="stylesheet" href="./stylesheets/main.css" />
-    <script type="module" src="./javascripts/main.js"></script>
   </head>
 
-  <body onload="displayCurrentMessage()">
+  <body>
     <div class="jumbotron container-fluid py-5 d-none d-md-block">
   <div class="py-5 text-light">
     <h1 class="display-4 bg-dark rounded me-5">Official Eportfolio of Joshua Howard</h1>
   </div>
 </div>
 
-<div class="featured">
-<div class="collapse" id="navbarToggleExternalContent">
-  <div class="bg-dark p-4">
-    <ul class="navbar-nav">
-      <li class="nav-item">
+<div id="menu-placeholder"></div>
 
-        <button class="btn btn-success mx-1" id="new_card" onclick="window.location.href='./index.html';">Home</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-success mx-1" id="new_card" onclick="window.location.href='./Academics.html';">Academics</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-success mx-1" id="new_card" onclick="window.location.href='./Career.html';">Career</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-success mx-1" id="new_card" onclick="window.location.href='./Personal.html';">Personal Life</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-success mx-1" id="new_card" onclick="window.location.href='./Personal.html';">Goals</button>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
-    <div class="navbarlist  d-none d-lg-block">
-    <ul class="navbar-nav flex-row">
-      <li class="nav-item">
-
-        <button class="btn btn-success mx-1" id="new_card" onclick="window.location.href='./index.html';">Home</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-success mx-1" id="new_card" onclick="window.location.href='./Academics.html';">Academics</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-success mx-1" id="new_card" onclick="window.location.href='./Career.html';">Career</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-success mx-1" id="new_card" onclick="window.location.href='./Personal.html';">Personal Life</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-success mx-1" id="new_card" onclick="window.location.href='./Personal.html';">Goals</button>
-      </li>
-    </ul>
-  </div>
-    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-</nav>
 <div class="Academics mx-3 text-center text-lg-start">
   <h2>Academics</h2>
   <div class="photo w-25">
@@ -100,7 +50,7 @@
 <p>While working as a Digital Automation Engineer I was able to count my experience as an internship. While my need to code is quite limited in this position, 
   I worked with my manager to find a project that I could work on that would
   allow me to use my coding skills and serve as a good project to count as an internship.
-  3 things which I workedo on during this internship were:
+  3 things which I worked on during this internship were:
   <ul>
     <li>Help create a power app in the power apps platform to increase team productivity
       <br>
@@ -143,11 +93,7 @@ src="https://youtube.com/embed//Av4jxIZOT84">
 <div class="quotesection mx-3 text-center text-lg-start">
   <hr>
   <h3>Random quote generator</h3>
-  <p style="font-style: italic;">Since creating the code for the website and launching it the code for my quote generator has stopped working, and I hope to look at it in more detail,
-    but for now this project is not functional.
-  </p>
-  
-  <!-- <p>Below you will see a quote generator which was programmed with 
+  <p style="font-style: italic;">Below you will see a quote generator which was programmed with 
     javascript. This quote generator has an array of objects,
     these objects being quotes, which at the press of the switch button
     displays a different quote. This entire website is my final
@@ -155,10 +101,10 @@ src="https://youtube.com/embed//Av4jxIZOT84">
     of this project I needed to implement javascript in some way,
     so I came up with this generator, which also serves now as an example
     of my ability to code in javascript.
-  </p> -->
+  </p>
   
 
-<div class="row row-cols-2 my-5 mx-3" id="#messages">
+<div class="row row-cols-2 my-5 mx-3" id="messages">
 </div>
 </div>
 </div>
@@ -170,6 +116,19 @@ src="https://youtube.com/embed//Av4jxIZOT84">
     </li>
   </ul>
 </footer>
-    
+    <script>
+    (async function loadMenu(){
+      try {
+        const res = await fetch('./menu.html');
+        if (!res.ok) throw new Error('Menu load failed: ' + res.status);
+        const html = await res.text();
+        document.getElementById('menu-placeholder').innerHTML = html;
+      } catch (e) {
+        console.error('Menu load error:', e);
+      }
+    })();
+  </script>
+
+    <script type="module" src="./javascripts/main.js"></script>
   </body>
 </html>

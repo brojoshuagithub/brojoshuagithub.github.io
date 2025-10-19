@@ -1,7 +1,5 @@
-import "bootstrap";
-import { doc } from "prettier";
-
-let initial_messages = [
+// simple list of quotes
+const initial_messages = [
   {
     who: "William Shakespeare",
     quote: "A rose by any other name would smell as sweet.",
@@ -229,48 +227,61 @@ let initial_messages = [
   {
     who: "Bickle (character)",
     quote: "You talkin' to me?",
-  }
+  },
+  {
+    who: "Malcolm X",
+    quote: "Education is the passport to the future, for tomorrow belongs to those who prepare for it today.",
+  },
+  {
+    who: "B.B. King",
+    quote: "The beautiful thing about learning is that no one can take it away from you.",
+  },
+  {
+    who: "Benjamin Franklin",
+    quote: "Tell me and I forget. Teach me and I remember. Involve me and I learn.",
+  },
+  {
+    who: "Steve Jobs",
+    quote: "The only way to do great work is to love what you do.",
+  },
 ];
 
-function getMessages() {
-  if (localStorage.getItem("messages") && localStorage.getItem("messages") !== "[]") {
-    return JSON.parse(localStorage.getItem("messages"));
-  } else {
-    return initial_messages;
-  }
+// escape HTML to avoid injection
+function escapeHtml(str) {
+  return String(str || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
-let currentMessageIndex = 0;
+// expose function to global scope so it can be called from HTML if desired
+window.displayCurrentMessage = function displayCurrentMessage() {
+  const container = document.getElementById("messages");
+  if (!container) return;
 
-displayCurrentMessage = function() {
-  let messages = getMessages();
-  let currentMessage = messages[currentMessageIndex];
-  let messages_html = `
-    <div class="message col mb-3" data-ndx="${currentMessageIndex}">
-      <div class="row g-0">
-        <div class="col-md-8">
-          <div class="message-body">
-            <h5 class="message-title">${currentMessage.who}</h5>
-            <p class="message-text">${currentMessage.quote}</p>
-            <p class="message-text">
-              <button class="btn btn-primary to-delete">Switch</button>
-            </p>
-          </div>
+  const q =
+    initial_messages[Math.floor(Math.random() * initial_messages.length)] ||
+    { quote: "No quotes available.", who: "" };
+
+  container.innerHTML = `
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <blockquote class="blockquote mb-2">
+            <p>${escapeHtml(q.quote)}</p>
+            <footer class="blockquote-footer">${escapeHtml(q.who)}</footer>
+          </blockquote>
+          <button class="btn btn-success" id="new-quote">New Quote</button>
         </div>
       </div>
     </div>
   `;
 
-  document.querySelector("#messages").innerHTML = messages_html;
+  const btn = document.getElementById("new-quote");
+  if (btn) btn.addEventListener("click", displayCurrentMessage);
+};
 
-  document.querySelector(".to-delete").onclick = function (event) {
-    if (confirm("Are you sure you want to switch to another quote?")) {
-      currentMessageIndex = (currentMessageIndex + 1) % messages.length;
-      displayCurrentMessage();
-    }
-  };
-
-  hideForm();
-}
-
-//displayCurrentMessage();
+// run once when module loads
+window.displayCurrentMessage();

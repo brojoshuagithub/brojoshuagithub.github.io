@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Github — Joshua Howard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow" />
+    <meta name="description" content="Links to my GitHub repositories." />
+    <link rel="stylesheet" href="./stylesheets/main.css" />
+  </head>
+
+  <body>
+    <div class="jumbotron container-fluid py-5 d-none d-md-block">
+      <div class="py-5 text-light">
+        <h1 class="display-4 bg-dark rounded me-5">Official Eportfolio of Joshua Howard</h1>
+      </div>
+    </div>
+
+ <div id="menu-placeholder"></div>
+
+    <main class="Github mx-3 text-center text-lg-start">
+      <h2 class="mt-4">Github Repositories</h2>
+      <p>Below are links to my most prevalent Github repositories. If you would like to view all my repositories you can follow this <a href="https://github.com/brojoshuagithub" target="_blank" rel="noopener noreferrer">link</a>.</p>
+
+      <div class="row row-cols-1 row-cols-md-2 g-3 my-4">
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Eportfolio</h5>
+              <p class="card-text">This is the repository for my personal website which you are currently viewing right now.</p>
+              <a class="btn btn-success" href="https://github.com/brojoshuagithub/brojoshuagithub.github.io" target="_blank" rel="noopener noreferrer">View Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Concept Center</h5>
+              <p class="card-text">This is the repository for my Concept Center project from my CS3750 software engineering 2 class.</p>
+              <a class="btn btn-success" href="https://github.com/brojoshuagithub/ConceptCenter" target="_blank" rel="noopener noreferrer">View Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Goal Manager</h5>
+              <p class="card-text">This is the repository for my final project in CS3350, client side framework class.</p>
+              <a class="btn btn-success" href="https://github.com/brojoshuagithub/finalProjectCS3350" target="_blank" rel="noopener noreferrer">View Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Digital Gallery</h5>
+              <p class="card-text">This is the repository for my CS3620 final project where I built a digital gallery for my father who is an artist.</p>
+              <a class="btn btn-success" href="https://github.com/brojoshuagithub/CS3620_Final_Project" target="_blank" rel="noopener noreferrer">View Repo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer mt-4 bg-dark py-3 text-light">
+      <p class="lead text-center">&copy; All rights reserved</p>
+      <ul class="navbar-nav text-center">
+        <li class="nav-item">
+          <a href="https://www.linkedin.com/in/joshua-howard-085a27236/">LinkedIn</a>
+        </li>
+      </ul>
+    </footer>
+    <script>
+    (async function loadMenu(){
+      try {
+        const res = await fetch('./menu.html');
+        if (!res.ok) throw new Error('Menu load failed: ' + res.status);
+        const html = await res.text();
+        document.getElementById('menu-placeholder').innerHTML = html;
+      } catch (e) {
+        console.error('Menu load error:', e);
+      }
+    })();
+  </script>
+
+    <script type="module" src="./javascripts/main.js"></script>
+  </body>
+</html>
